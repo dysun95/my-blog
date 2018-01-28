@@ -1,7 +1,7 @@
-let dbConnect = require('../main')
+// let dbConnect = require('../main')
 
-async function createUser (user) {
-  let collection = await dbConnect('user')
+async function createUser (db, user) {
+  let collection = db.collection('user')
   let result = await collection.insert(user)
   return result
 }

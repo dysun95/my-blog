@@ -1,22 +1,9 @@
-let dbConnect = require('../main')
+// let dbConnect = require('../main')
 
-function readBlog (blog) {
-  return new Promise((resolve, reject) => {
-    if (blog) {
-      dbConnect('blog').then(collection => {
-        collection.findOne(blog, (err, result) => {
-          if (err) {
-            reject(err)
-          }
-          resolve(result)
-        })
-      }).catch(err => {
-        reject(err)
-      })
-    } else {
-      reject()
-    }
-  })
+async function readBlog (db, blog) {
+  let collection = db.collection('blog')
+  let result = await collection.findOne(blog)
+  return result
 }
 
 module.exports = readBlog

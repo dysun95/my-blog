@@ -1,7 +1,7 @@
-let dbConnect = require('../main')
+// let dbConnect = require('../main')
 
-async function updateUser (user, userInfo) {
-  let collection = await dbConnect('user')
+async function updateUser (db, user, userInfo) {
+  let collection = db.collection('user')
   let result = await collection.updateOne(user, {$set: userInfo})
   return result
 }

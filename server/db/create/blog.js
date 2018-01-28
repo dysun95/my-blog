@@ -1,7 +1,7 @@
-let dbConnect = require('../main')
+// let dbConnect = require('../main')
 
-async function createBlog (blog) {
-  let collection = await dbConnect('blog')
+async function createBlog (db, blog) {
+  let collection = db.collection('blog')
   let result = await collection.insert(blog)
   return result
 }
