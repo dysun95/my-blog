@@ -7,9 +7,8 @@ const router = new Router({
   prefix: '/api'
 })
 
-function initRouter(db) {
+function initRouter (db) {
   router.post('/login', async function (ctx) {
-    console.log(ctx.response)
     await handler.login(db, ctx)
   })
 
@@ -17,28 +16,36 @@ function initRouter(db) {
     await handler.register(db, ctx)
   })
 
-  // router.get('/get/user', token, function (req, res) {
-  //   handler.getUser(req, res)
-  // })
+  router.get('/get/user', token, async function (ctx) {
+    await handler.getUser(db, ctx)
+  })
 
-  // router.post('/add/blog', token, function (req, res) {
-  //   handler.addBlog(req, res)
-  // })
+  router.post('/add/blog', token, async function (ctx) {
+    await handler.addBlog(db, ctx)
+  })
 
-  // router.get('/get/blogList', token, function (req, res) {
-  //   handler.getBlogList(req, res)
-  // })
+  router.get('/get/blogList', token, async function (ctx) {
+    await handler.getBlogList(db, ctx)
+  })
 
-  // router.get('/get/blog', token, function (req, res) {
-  //   handler.getBlog(req, res)
-  // })
+  router.get('/get/blog', token, async function (ctx) {
+    await handler.getBlog(db, ctx)
+  })
 
-  // router.post('/edit/blog', token, function (req, res) {
-  //   handler.editBlog(req, res)
-  // })
+  router.post('/edit/blog', token, async function (ctx) {
+    await handler.editBlog(db, ctx)
+  })
 
   router.post('/upload/image', token)
-  router.post('/upload/image', upload.single('image'))
+  router.post('/upload/image', upload.single('image'), async ctx => {
+    ctx.body = {
+      status: 200,
+      message: 'success',
+      data: {
+        name: ctx.req.file.filename
+      }
+    }
+  })
 
   return router
 }

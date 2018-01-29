@@ -1,7 +1,7 @@
-const readUser = require('../db/read/user')
-const encrypt = require('../util/encrypt')
-const encodeToken = require('../util/token').encodeToken
-const resHandler = require('../util/response')
+const readUser = require('../../db/read/user')
+const encrypt = require('../../util/encrypt')
+const encodeToken = require('../../util/token').encodeToken
+const resHandler = require('../../util/response')
 
 async function login (db, ctx) {
   let user = ctx.request.body

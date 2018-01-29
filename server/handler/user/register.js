@@ -1,14 +1,12 @@
-const readUser = require('../db/read/user')
-const createUser = require('../db/create/user')
-const updateUser = require('../db/update/user')
-const encrypt = require('../util/encrypt')
+const readUser = require('../../db/read/user')
+const createUser = require('../../db/create/user')
+const updateUser = require('../../db/update/user')
+const encrypt = require('../../util/encrypt')
 // const hexToDec = require('../util/hexToDec')
-const resHandler = require('../util/response')
+const resHandler = require('../../util/response')
 
 /**
  * 注册用户，存储用户信息，相同名字则不通过
- * @param {Object} req 请求
- * @param {Object} res 返回
  */
 async function register (db, ctx) {
   let user = ctx.request.body

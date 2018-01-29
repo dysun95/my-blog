@@ -1,33 +1,24 @@
-const readBlog = require('../db/read/blog')
-const resHandler = require('../util/response')
+const readBlog = require('../../db/read/blog')
+const resHandler = require('../../util/response')
 
-function getBlog (req, res) {
-  let puid = req.cookies.puid || req.query.puid || req.body.puid || ''
-  if (puid) {
-    let blogID = req.query.blogID
-    if (blogID) {
-      let queryArg = {
-        blogID: blogID,
-        author: puid
-      }
-      readBlog(queryArg).then(result => {
-        if (result && result.blogID) {
-          let {_id, ...blog} = result
-          resHandler(res, 200, blog)
-        } else {
-          resHandler(res, 4011)
-        }
-      }).catch(err => {
-        resHandler(res, 5000)
-        console.log(err)
-      })
-    } else {
-      // 缺少blogID
-      resHandler(res, 4010)
-    }
+async function getBlog (db, ctx) {
+  let puid = ctx.cookies.get('puid') || ctx.query.puid || ctx.request.body.puid || ''
+  let blogID = ctx.query.blogID
+  if (!(puid && blogID)) {
+    resHandler(ctx, 4009)
+    return
+  }
+  let queryArg = {
+    blogID: blogID,
+    author: puid
+  }
+  let result = await readBlog(db, queryArg)
+  if (result && result.blogID) {
+    result._id = undefined
+    resHandler(ctx, 200, result)
   } else {
-    // 缺少puid参数
-    resHandler(res, 4009)
+    // 文章不存在
+    resHandler(ctx, 4011)
   }
 }
 

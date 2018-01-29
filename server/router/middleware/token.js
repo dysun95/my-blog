@@ -6,11 +6,11 @@ const checkToken = require('../../util/checkToken')
  * @param {Object} res - 响应对象
  * @param {Function} next - 路由下一步
  */
-function token (ctx, next) {
+async function token (ctx, next) {
   let tokenStatus = checkToken(ctx)
   if (tokenStatus === 200) {
     // token验证成功
-    next()
+    await next()
   } else if (tokenStatus === 4006) {
     // token失效
     ctx.body = {
