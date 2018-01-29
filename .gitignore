@@ -64,6 +64,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
+client/src/assets/*.jpg
+client/src/assets/*.png
 
 # Editor directories and files
 .idea
