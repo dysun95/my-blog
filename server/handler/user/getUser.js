@@ -10,7 +10,7 @@ async function getUser (db, ctx) {
       'name': ctx.query.name
     }
     let result = await readUser(db, user)
-    if (result.name && result.puid) {
+    if (result && result.name && result.puid) {
       let {name, puid} = result
       resHandler(ctx, 200, {
         name: name,

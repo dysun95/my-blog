@@ -18,6 +18,8 @@
     "koa-multer": "^1.0.2",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "moment": "^2.20.1",
     "mongodb": "^3.0.1",
     "vue": "^2.5.2",

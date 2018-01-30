@@ -1,6 +1,8 @@
 <template>
-  <div class="hello">
-    <div>222222222</div>
+  <div class="login">
+    <div class="logo-wrap"></div>
+    <div class="input-wrap"></div>
+    <div class="button-wrap"></div>
   </div>
 </template>
 
@@ -15,20 +17,14 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style lang="less">
+  .login {
+    width: 363px;
+    margin: 20vh auto 0;
+    padding: 50px 0;
+    background-color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+  }
 </style>

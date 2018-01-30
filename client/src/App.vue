@@ -26,8 +26,8 @@ html, body {
   text-align: center;
   color: #2c3e50;
   height: 100%;
-  background: url('./assets/bg_02.png') no-repeat;
+  background: url('./assets/bg_01.jpg') no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 50% 0;
 }
 </style>

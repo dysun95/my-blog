@@ -15,7 +15,7 @@ async function register (db, ctx) {
     if (result && result.name === user.name) {
       resHandler(ctx, 4002)
     } else {
-      user.passwd = encrypt.sha256(user.passwd) // sha256加密
+      user.passwd = encrypt.sha256(user.passwd.toString()) // sha256加密
       // user.puid = sha1() // puid唯一性如何保证 -> 使用mongodb生成的_id作为puid
       result = await createUser(db, user)
       if (result.result && result.result.ok === 1) {

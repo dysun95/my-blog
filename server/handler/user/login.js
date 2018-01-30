@@ -8,7 +8,7 @@ async function login (db, ctx) {
   if (user && user.name && user.passwd) {
     let result = await readUser(db, {'name': user.name})
     if (result && result.name && result.puid && result.passwd) {
-      if (result.name === user.name && result.passwd === encrypt.sha256(user.passwd)) {
+      if (result.name === user.name && result.passwd.toString() === encrypt.sha256(user.passwd.toString())) {
         // 用户名、密码正确
         let token = encodeToken(result.puid)
         ctx.cookies.set('puid', result.puid, {
