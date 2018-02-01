@@ -9,6 +9,7 @@ const router = new Router({
 
 function initRouter (db) {
   router.post('/login', async function (ctx) {
+    console.log(ctx.request.body)
     await handler.login(db, ctx)
   })
 

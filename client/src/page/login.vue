@@ -6,24 +6,50 @@
     </div>
     <div class="input-wrap">
       <div class="input-filed">
-        <input placeholder="username">
+        <input type="text" placeholder="username" v-model="username">
       </div>
       <div class="input-filed">
-        <input placeholder="password">
+        <input type="password" placeholder="password" v-model="passwd">
       </div>
     </div>
     <div class="error-wrap"></div>
     <div class="button-wrap">
-      <button class="submit">登录</button>
+      <button class="submit" @click="login">登录</button>
     </div>
+    <div class="background-image"></div>
   </div>
 </template>
 
 <script>
+import {login} from '../api/login'
+import toastr from '../common/toastr'
+import md5 from 'blueimp-md5'
 export default {
-  name: 'HelloWorld',
+  name: 'Login',
   data () {
     return {
+      username: '',
+      passwd: ''
+    }
+  },
+  methods: {
+    login () {
+      if (!this.username) {
+        toastr.error('Username cannot be blank')
+        return
+      }
+      if (!this.passwd) {
+        toastr.error('Password cannot be blank')
+        return
+      }
+      login({
+        name: this.username,
+        passwd: md5(this.passwd)
+      }).then(res => {
+        toastr.success('Login Success')
+      }).catch(err => {
+        console.error(err)
+      })
     }
   }
 }
@@ -108,5 +134,19 @@ export default {
       color: #fff;
       font-size: 16px;
     }
+  }
+  .background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/bg_01.jpg') no-repeat;
+    background-size: cover;
+    background-position: 50% 0;
+    z-index: -1;
+    filter: blur(2px);
   }
 </style>

@@ -12,16 +12,20 @@
     "server": "node server/app.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "blueimp-md5": "^2.10.0",
     "jwt-simple": "^0.5.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-multer": "^1.0.2",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
+    "koa2-cors": "^2.0.5",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "moment": "^2.20.1",
     "mongodb": "^3.0.1",
+    "toastr": "^2.1.4",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
