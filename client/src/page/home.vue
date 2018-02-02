@@ -27,6 +27,7 @@ export default {
       width: calc(~'100% - 300px');
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.1);
+      text-align: center;
     }
     // .footer {
     //   fix
