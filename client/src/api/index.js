@@ -2,7 +2,7 @@ import axios from 'axios'
 import toastr from '../common/toastr'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://api.dysun95.tk/api',
+  baseURL: 'http://local.dysun95.tk:3000/api',
   timeout: 3000,
   withCredentials: true
 })

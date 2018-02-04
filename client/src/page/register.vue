@@ -1,39 +1,51 @@
 <template>
-  <div class="login">
+  <div class="register">
     <div class="logo-wrap">
       <div class="logo"></div>
-      <div class="text">MY BLOG</div>
+      <div class="text">Register your account</div>
     </div>
     <div class="input-wrap">
       <div class="input-filed">
-        <input type="text" placeholder="username" v-model="username">
+        <input class="username" type="text" placeholder="username" v-model="username">
       </div>
       <div class="input-filed">
-        <input type="password" placeholder="password" v-model="passwd">
+        <input class="passwd" type="password" placeholder="password" v-model="passwd">
+      </div>
+      <div class="input-filed">
+        <input :class="passwdCorrect ? '' : 'wrong' " type="password" placeholder="confirm password" v-model="confirmPasswd" @input="confirm">
       </div>
     </div>
     <div class="error-wrap"></div>
     <div class="button-wrap">
-      <button class="submit" @click="login">Login</button>
+      <button class="submit" @click="register">Register</button>
     </div>
     <div class="background-image"></div>
   </div>
 </template>
 
 <script>
-import {login} from '../api/login'
+import {register} from '../api/register'
 import toastr from '../common/toastr'
 import md5 from 'blueimp-md5'
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
     return {
       username: '',
-      passwd: ''
+      passwd: '',
+      confirmPasswd: '',
+      passwdCorrect: true
     }
   },
   methods: {
-    login () {
+    confirm () {
+      if (this.confirmPasswd !== this.passwd) {
+        this.passwdCorrect = false
+      } else {
+        this.passwdCorrect = true
+      }
+    },
+    register () {
       if (!this.username) {
         toastr.error('Username cannot be blank')
         return
@@ -42,12 +54,16 @@ export default {
         toastr.error('Password cannot be blank')
         return
       }
-      login({
+      if (this.confirmPasswd !== this.passwd) {
+        toastr.error('Check password and confirm password')
+        return
+      }
+      register({
         name: this.username,
         passwd: md5(this.passwd)
       }).then(res => {
-        toastr.success('Login Success')
-        this.$router.push('/list')
+        toastr.success('Register Success: ' + this.username)
+        this.$router.push('/login')
       }).catch(err => {
         console.error(err)
       })
@@ -57,7 +73,7 @@ export default {
 </script>
 
 <style lang="less">
-  .login {
+  .register {
     width: 363px;
     // height: 500px;
     margin: 20vh auto 0;
@@ -107,6 +123,9 @@ export default {
         border: none;
         border-radius: 4px;
         font-size: 16px;
+      }
+      .wrong {
+        outline-color: #ff0000;
       }
     }
   }

@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <div class="header"></div>
+    <div class="header">
+      <div class="logo"></div>
+      <div class="text">Write my life</div>
+      <div class="button">Sign out</div>
+    </div>
     <div class="body">
       <router-view></router-view>
     </div>
@@ -20,13 +24,40 @@ export default {
     // background: #000;
     .header, .footer {
       width: 100%;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
+      height: 60px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+    .header {
+      .logo, .text, .button {
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+      }
+      .logo {
+        // height: 40px;
+        width: 90px;
+        background: url('../assets/logo.png') no-repeat;
+        background-size: auto 66%;
+        background-position: 50% 50%;
+        vertical-align: text-top;
+      }
+      .text {
+        font-size: 30px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        vertical-align: text-top;
+        color: #555;
+      }
+      .button {
+        float: right;
+        margin-right: 20px;
+        font-size: 25px;
+        color: #666;
+        cursor: pointer;
+      }
     }
     .body {
-      width: calc(~'100% - 300px');
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.1);
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
       text-align: center;
     }
     // .footer {
