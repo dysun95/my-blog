@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="header">
-      <div class="logo"></div>
-      <div class="text">Write my life</div>
+      <div class="logo" @click="goList"></div>
+      <div class="text" @click="goWrite">Write my life</div>
       <div class="button">Sign out</div>
     </div>
     <div class="body">
@@ -15,12 +15,21 @@
 
 <script>
 export default {
+  methods: {
+    goList () {
+      this.$router.push('/list')
+    },
+    goWrite () {
+      this.$router.push('/editor')
+    }
+  }
 }
 </script>
 
 <style lang="less">
   .home {
     width: 100%;
+    height: 100%;
     // background: #000;
     .header, .footer {
       width: 100%;
@@ -40,12 +49,14 @@ export default {
         background-size: auto 66%;
         background-position: 50% 50%;
         vertical-align: text-top;
+        cursor: pointer;
       }
       .text {
         font-size: 30px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         vertical-align: text-top;
         color: #555;
+        cursor: pointer;
       }
       .button {
         float: right;
@@ -56,8 +67,10 @@ export default {
       }
     }
     .body {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.8);
+      width: calc(~'100% - 120px');
+      min-height: calc(~'100% - 120px');
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.4);
       text-align: center;
     }
     // .footer {
@@ -72,11 +85,12 @@ export default {
       bottom: 0;
       width: 100%;
       height: 100%;
-      background: url('../assets/bg_01.jpg') no-repeat;
-      background-size: cover;
-      background-position: 50% 0;
+      background: #e4e7ee;
+      // background: url('../assets/bg_01.jpg') no-repeat;
+      // background-size: cover;
+      // background-position: 50% 0;
       z-index: -1;
-      filter: blur(2px);
+      // filter: blur(2px);
     }
   }
 </style>

@@ -6,10 +6,11 @@ const resHandler = require('../../util/response')
  * 增加文章，生成时间戳、blogID和作者
  */
 async function addBlog (db, ctx) {
-  let {title, content} = ctx.request.body
+  let {title, content, originalContent} = ctx.request.body
   let blog = {
     title: title,
-    content: content
+    content: content,
+    originalContent: originalContent
   }
   let puid = ctx.cookies.get('puid') || ctx.query.puid || ctx.request.body.puid || ''
   blog.author = puid

@@ -16,6 +16,7 @@ async function getBlogList (db, ctx) {
     for (let i = 0; i < length; i++) {
       // 去除_id属性
       result[i]._id = undefined
+      result[i].originalContent = undefined
     }
     resHandler(ctx, 200, {
       list: result,

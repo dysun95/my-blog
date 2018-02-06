@@ -3,7 +3,7 @@ const resHandler = require('../../util/response')
 
 async function editBlog (db, ctx) {
   let puid = ctx.cookies.get('puid') || ctx.query.puid || ctx.request.body.puid || ''
-  let {blogID, title, content} = ctx.request.body
+  let {blogID, title, content, originalContent} = ctx.request.body
   if (!(puid && blogID)) {
     resHandler(ctx, 4009)
     return
@@ -15,8 +15,9 @@ async function editBlog (db, ctx) {
   let updateInfo = {}
   if (title) {
     updateInfo.title = title
-  } else if (content) {
+  } else if (content && originalContent) {
     updateInfo.content = content
+    updateInfo.originalContent = originalContent
   } else {
     // 缺少文章参数
     resHandler(ctx, 4007)

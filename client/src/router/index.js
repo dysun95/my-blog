@@ -3,8 +3,9 @@ import Router from 'vue-router'
 import Login from '@/page/login'
 import Register from '@/page/register'
 import Home from '@/page/home'
-import List from '@/components/list'
+import List from '@/page/list'
 import Editor from '@/page/editor'
+import Detail from '@/page/detail'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
           path: 'editor',
           name: 'Editor',
           component: Editor
+        },
+        {
+          path: 'detail/:blogID',
+          name: 'Detail',
+          component: Detail
         }
       ]
     }

@@ -15,6 +15,7 @@ async function getBlog (db, ctx) {
   let result = await readBlog(db, queryArg)
   if (result && result.blogID) {
     result._id = undefined
+    result.originalContent = undefined
     resHandler(ctx, 200, result)
   } else {
     // 文章不存在

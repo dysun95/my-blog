@@ -2,3 +2,4 @@
 /config/
 /dist/
 /*.js
+/client/src/common/highlight.pack.js
