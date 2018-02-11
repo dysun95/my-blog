@@ -14,13 +14,14 @@ async function login (db, ctx) {
         ctx.cookies.set('puid', result.puid, {
           domain: '.dysun95.tk',
           path: '/',
-          maxAge: 1000 * 60 * 60 * 24 * 2
+          maxAge: 1000 * 60 * 60 * 24 * 2,
+          httpOnly: false
         })
         ctx.cookies.set('token', token, {
           domain: '.dysun95.tk',
           path: '/',
           maxAge: 1000 * 60 * 60 * 24 * 2,
-          httpOnly: true
+          httpOnly: false
         })
         resHandler(ctx, 200, {
           name: result.name,

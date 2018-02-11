@@ -3,7 +3,7 @@
     <div class="header">
       <div class="logo" @click="goList"></div>
       <div class="text" @click="goWrite">Write my life</div>
-      <div class="button">Sign out</div>
+      <div class="button" @click="signOut">Sign out</div>
     </div>
     <div class="body">
       <router-view></router-view>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 export default {
   methods: {
     goList () {
@@ -21,6 +22,12 @@ export default {
     },
     goWrite () {
       this.$router.push('/editor')
+    },
+    signOut () {
+      console.log(Cookies.get('puid'))
+      Cookies.set('puid', '', {domain: '.dysun95.tk'})
+      Cookies.set('token', '', {domain: '.dysun95.tk'})
+      this.$router.push('/login')
     }
   }
 }

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Cookies from 'js-cookie'
+
 import Login from '@/page/login'
 import Register from '@/page/register'
 import Home from '@/page/home'
@@ -15,7 +17,14 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
+      beforeEnter: (to, from, next) => {
+        if (Cookies.get('puid') && Cookies.get('token')) {
+          next(from)
+        } else {
+          next()
+        }
+      }
     },
     {
       path: '/register',
@@ -24,9 +33,20 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Home',
       component: Home,
+      beforeEnter: (to, from, next) => {
+        if (Cookies.get('puid') && Cookies.get('token')) {
+          next()
+        } else {
+          next('/login')
+        }
+      },
       children: [
+        {
+          path: '',
+          name: 'Home',
+          component: List
+        },
         {
           path: 'list',
           name: 'List',

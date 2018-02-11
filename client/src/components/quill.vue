@@ -50,7 +50,7 @@ export default {
           }
         }
       },
-      placeholder: 'Write your heart...',
+      placeholder: '',
       theme: 'snow'
     })
     // quill.clipboard.dangerouslyPasteHTML(this.content)
@@ -60,6 +60,9 @@ export default {
     quill.on('text-change', function (delta, oldDelta, source) {
       _this.getHTMLContent()
       _this.getOriginalContent()
+    })
+    this.$refs.quill.addEventListener('click', function () {
+      quill.focus()
     })
     this.quill = quill
   },
@@ -114,9 +117,11 @@ export default {
     width: 60%;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.6);
+    font-family: 'Sailec Light',sans-serif;
     .quill-container {
       width: 100%;
       min-height: 500px;
+      cursor: text;
     }
   }
 </style>
