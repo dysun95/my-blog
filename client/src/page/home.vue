@@ -74,7 +74,7 @@ export default {
       }
     }
     .body {
-      width: calc(~'100% - 120px');
+      width: calc(~'100% - 240px');
       min-height: calc(~'100% - 120px');
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.4);

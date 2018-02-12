@@ -1,20 +1,29 @@
 <template>
   <div class="quill">
     <div class="quill-toolbar">
-      <select class="ql-size">
-        <option value="small"></option>
-        <!-- Note a missing, thus falsy value, is used to reset to default -->
-        <option selected></option>
-        <option value="large"></option>
-        <option value="huge"></option>
-      </select>
+      <span class="ql-formats">
+        <select class="ql-size">
+          <option value="small"></option>
+          <!-- Note a missing, thus falsy value, is used to reset to default -->
+          <option selected></option>
+          <option value="large"></option>
+          <option value="huge"></option>
+        </select>
+      </span>
       <!-- Add a bold button -->
-      <button class="ql-bold"></button>
+      <span class="ql-formats">
+        <button class="ql-bold" type="button"></button>
+        <button class="ql-italic" type="button"></button>
+        <button class="ql-underline" type="button"></button>
+        <button class="ql-strike" type="button"></button>
+      </span>
       <!-- Add subscript and superscript buttons -->
-      <button class="ql-script" value="sub"></button>
-      <button class="ql-script" value="super"></button>
-      <button class="ql-code-block"></button>
-      <button class="ql-image"></button>
+      <span class="ql-formats">
+        <button class="ql-script" value="sub"></button>
+        <button class="ql-script" value="super"></button>
+        <button class="ql-code-block"></button>
+        <button class="ql-image"></button>
+      </span>
     </div>
     <div class="quill-container" ref="quill"></div>
   </div>
@@ -61,6 +70,7 @@ export default {
       _this.getHTMLContent()
       _this.getOriginalContent()
     })
+    quill.focus()
     this.$refs.quill.addEventListener('click', function () {
       quill.focus()
     })
@@ -87,7 +97,7 @@ export default {
       input.click()
     },
     onFileChange (e) {
-      let baseURL = 'http://local.dysun95.tk:3000/image/'
+      let baseURL = 'https://api.dysun95.tk/image/'
       let fileInput = e.target
       if (fileInput.files.length === 0) {
         return
@@ -114,14 +124,23 @@ export default {
   @import url('quill/dist/quill.snow.css');
   .quill {
     display: inline-block;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0);
     font-family: 'Sailec Light',sans-serif;
+    .quill-toolbar {
+      border-left-color: rgba(255, 255, 255, 0);
+      border-right-color: rgba(255, 255, 255, 0);
+    }
     .quill-container {
-      width: 100%;
+      width: calc(~'100% + 30px');
+      margin-left: -15px;
       min-height: 500px;
+      // padding: 0 50px;
+      border-color: rgba(255, 255, 255, 0);
+      box-sizing: border-box;
       cursor: text;
+      font-size: 18px;
     }
   }
 </style>

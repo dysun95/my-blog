@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <div class="logo-wrap">
-      <div class="logo"></div>
+      <div class="logo" @click="goHome"></div>
       <div class="text">Register your account</div>
     </div>
     <div class="input-wrap">
@@ -63,10 +63,13 @@ export default {
         passwd: md5(this.passwd)
       }).then(res => {
         toastr.success('Register Success: ' + this.username)
-        this.$router.push('/login')
+        this.$router.push('/')
       }).catch(err => {
         console.error(err)
       })
+    },
+    goHome () {
+      this.$router.push('/')
     }
   }
 }

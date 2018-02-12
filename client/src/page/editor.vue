@@ -1,7 +1,7 @@
 <template>
   <div class="editor">
     <div class="title-wrap">
-      <input type="text" class="title" placeholder="Title" v-model="title">
+      <input type="text" class="title" placeholder="请输入文章标题" v-model="title">
     </div>
     <quill
     :originalContent="originalContent"
@@ -61,7 +61,7 @@ export default {
 <style lang="less">
 .editor {
   .title-wrap {
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     padding: 30px 0 20px;
     .title {
@@ -72,7 +72,7 @@ export default {
       padding-left: 10px;
       box-sizing: border-box;
       border: none;
-      border-bottom: 1px solid #ccc;
+      // border-bottom: 1px solid #ccc;
       outline: none;
       background-color: rgba(255, 255, 255, 0);
       font-size: 20px;
