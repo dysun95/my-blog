@@ -48,11 +48,6 @@ export default new Router({
           component: List
         },
         {
-          path: 'list',
-          name: 'List',
-          component: List
-        },
-        {
           path: 'editor',
           name: 'Editor',
           component: Editor

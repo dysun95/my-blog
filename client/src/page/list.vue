@@ -18,12 +18,28 @@ export default {
       total: 0
     }
   },
-  created () {
+  mounted () {
     getBlogList().then(res => {
       res = res.data
       if (res.status === 200) {
         this.blogList = res.data.list
         this.total = res.data.total
+        
+        this.$nextTick(() => {
+          let blogWrapList = document.getElementsByClassName('blog-wrap')
+          Array.prototype.forEach.call(blogWrapList, blogWrap => {
+            console.log(blogWrap.clientHeight)
+            blogWrap.imgList = blogWrap.getElementsByTagName('img')
+            if (blogWrap.imgList.length > 0) {
+              let imgSrc = blogWrap.imgList[0].src
+              Array.prototype.forEach.call(blogWrap.imgList, img => {
+                img.src = 'blank'
+              })
+              blogWrap.imgList[0].src = imgSrc
+            }
+          })
+          console.log(blogWrapList[0])
+        })
       } else {
         console.error(res.message)
       }

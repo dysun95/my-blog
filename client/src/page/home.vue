@@ -18,7 +18,7 @@ import Cookies from 'js-cookie'
 export default {
   methods: {
     goList () {
-      this.$router.push('/list')
+      this.$router.push('/')
     },
     goWrite () {
       this.$router.push('/editor')
