@@ -14,22 +14,9 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie'
+import home from '../common/mixins/home'
 export default {
-  methods: {
-    goList () {
-      this.$router.push('/')
-    },
-    goWrite () {
-      this.$router.push('/editor')
-    },
-    signOut () {
-      console.log(Cookies.get('puid'))
-      Cookies.set('puid', '', {domain: '.dysun95.tk'})
-      Cookies.set('token', '', {domain: '.dysun95.tk'})
-      this.$router.push('/login')
-    }
-  }
+  mixins: [home]
 }
 </script>
 

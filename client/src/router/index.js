@@ -6,6 +6,7 @@ import Login from '@/page/login'
 import Register from '@/page/register'
 import Home from '@/page/home'
 import List from '@/page/list'
+import ListAll from '@/page/listAll'
 import Editor from '@/page/editor'
 import Detail from '@/page/detail'
 
@@ -32,13 +33,18 @@ export default new Router({
       component: Register
     },
     {
+      path: '/list',
+      name: 'List',
+      component: ListAll
+    },
+    {
       path: '/',
       component: Home,
       beforeEnter: (to, from, next) => {
         if (Cookies.get('puid') && Cookies.get('token')) {
           next()
         } else {
-          next('/login')
+          next('/list')
         }
       },
       children: [
@@ -58,6 +64,10 @@ export default new Router({
           component: Detail
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })

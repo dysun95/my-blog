@@ -11,13 +11,9 @@
 
 <script>
 import {getBlogList} from '../api/getBlogList'
+import list from '../common/mixins/list'
 export default {
-  data () {
-    return {
-      blogList: [],
-      total: 0
-    }
-  },
+  mixins: [list],
   mounted () {
     getBlogList().then(res => {
       res = res.data
@@ -26,19 +22,7 @@ export default {
         this.total = res.data.total
         
         this.$nextTick(() => {
-          let blogWrapList = document.getElementsByClassName('blog-wrap')
-          Array.prototype.forEach.call(blogWrapList, blogWrap => {
-            console.log(blogWrap.clientHeight)
-            blogWrap.imgList = blogWrap.getElementsByTagName('img')
-            if (blogWrap.imgList.length > 0) {
-              let imgSrc = blogWrap.imgList[0].src
-              Array.prototype.forEach.call(blogWrap.imgList, img => {
-                img.src = 'blank'
-              })
-              blogWrap.imgList[0].src = imgSrc
-            }
-          })
-          console.log(blogWrapList[0])
+          this.hideImage()
         })
       } else {
         console.error(res.message)
@@ -46,11 +30,6 @@ export default {
     }).catch(err => {
       console.error(err)
     })
-  },
-  methods: {
-    getBlog (index) {
-      this.$router.push('/detail/' + this.blogList[index].blogID)
-    }
   }
 }
 </script>

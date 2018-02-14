@@ -33,7 +33,7 @@ function initRouter (db) {
     await handler.getBlogListAll(db, ctx)
   })
 
-  router.get('/get/blog', token, async function (ctx) {
+  router.get('/get/blog', async function (ctx) {
     await handler.getBlog(db, ctx)
   })
 
