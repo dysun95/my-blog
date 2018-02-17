@@ -48,7 +48,7 @@ export default {
         passwd: md5(this.passwd)
       }).then(res => {
         toastr.success('Login Success')
-        this.$router.push('/')
+        this.$router.push('/home/list')
       }).catch(err => {
         console.error(err)
       })

@@ -21,7 +21,7 @@ export default new Router({
       component: Login,
       beforeEnter: (to, from, next) => {
         if (Cookies.get('puid') && Cookies.get('token')) {
-          next(from)
+          next('/home/list')
         } else {
           next()
         }
@@ -33,35 +33,35 @@ export default new Router({
       component: Register
     },
     {
-      path: '/list',
-      name: 'List',
+      path: '/listAll',
+      name: 'ListAll',
       component: ListAll
     },
     {
-      path: '/',
+      path: '/detail/:blogID',
+      name: 'Detail',
+      component: Detail
+    },
+    {
+      path: '/home',
       component: Home,
       beforeEnter: (to, from, next) => {
         if (Cookies.get('puid') && Cookies.get('token')) {
           next()
         } else {
-          next('/list')
+          next('/listAll')
         }
       },
       children: [
         {
-          path: '',
-          name: 'Home',
+          path: 'list',
+          name: 'List',
           component: List
         },
         {
           path: 'editor',
           name: 'Editor',
           component: Editor
-        },
-        {
-          path: 'detail/:blogID',
-          name: 'Detail',
-          component: Detail
         }
       ]
     },

@@ -3,10 +3,10 @@ import Cookies from 'js-cookie'
 export default {
   methods: {
     goList () {
-      this.$router.push('/')
+      this.$router.push('/home/list')
     },
     goWrite () {
-      this.$router.push('/editor')
+      this.$router.push('/home/editor')
     },
     signOut () {
       Cookies.set('puid', '', {domain: '.dysun95.tk'})

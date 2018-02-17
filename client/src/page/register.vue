@@ -63,13 +63,13 @@ export default {
         passwd: md5(this.passwd)
       }).then(res => {
         toastr.success('Register Success: ' + this.username)
-        this.$router.push('/')
+        this.$router.push('/login')
       }).catch(err => {
         console.error(err)
       })
     },
     goHome () {
-      this.$router.push('/')
+      this.$router.push('/login')
     }
   }
 }
