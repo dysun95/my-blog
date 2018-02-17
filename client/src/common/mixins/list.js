@@ -7,8 +7,7 @@ export default {
   },
   methods: {
     getBlog (index) {
-      console.log(2333, this.blogList[index].blogID)
-      this.$router.push('/detail/' + this.blogList[index].blogID)
+      this.$router.push('/home/detail/' + this.blogList[index].blogID)
     },
     hideImage () {
       let blogWrapList = document.getElementsByClassName('blog-wrap')

@@ -24,6 +24,15 @@
         <button class="ql-code-block"></button>
         <button class="ql-image"></button>
       </span>
+      <span class="ql-formats">
+        <button class="ql-list" value="ordered"></button>
+        <button class="ql-list" value="bullet"></button>
+        <select class="ql-color"></select>
+        <select class="ql-background"></select>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-clean"></button>
+      </span>
     </div>
     <div class="quill-container" ref="quill"></div>
   </div>

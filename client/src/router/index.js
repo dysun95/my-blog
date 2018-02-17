@@ -9,6 +9,7 @@ import List from '@/page/list'
 import ListAll from '@/page/listAll'
 import Editor from '@/page/editor'
 import Detail from '@/page/detail'
+import Error from '@/page/error'
 
 Vue.use(Router)
 
@@ -33,41 +34,57 @@ export default new Router({
       component: Register
     },
     {
-      path: '/listAll',
-      name: 'ListAll',
-      component: ListAll
-    },
-    {
-      path: '/detail/:blogID',
-      name: 'Detail',
-      component: Detail
-    },
-    {
       path: '/home',
       component: Home,
-      beforeEnter: (to, from, next) => {
-        if (Cookies.get('puid') && Cookies.get('token')) {
-          next()
-        } else {
-          next('/listAll')
-        }
-      },
       children: [
+        {
+          path: '',
+          redirect: '/home/list'
+        },
         {
           path: 'list',
           name: 'List',
-          component: List
+          component: List,
+          beforeEnter: (to, from, next) => {
+            if (Cookies.get('puid') && Cookies.get('token')) {
+              next()
+            } else {
+              next('/home/listAll')
+            }
+          }
         },
         {
           path: 'editor',
           name: 'Editor',
-          component: Editor
+          component: Editor,
+          beforeEnter: (to, from, next) => {
+            if (Cookies.get('puid') && Cookies.get('token')) {
+              next()
+            } else {
+              next('/home/listAll')
+            }
+          }
+        },
+        {
+          path: 'listALl',
+          name: 'ListAll',
+          component: ListAll
+        },
+        {
+          path: 'detail/:blogID',
+          name: 'Detail',
+          component: Detail
         }
       ]
     },
     {
+      path: '/error',
+      name: 'Error',
+      component: Error
+    },
+    {
       path: '*',
-      redirect: '/'
+      redirect: '/error'
     }
   ]
 })

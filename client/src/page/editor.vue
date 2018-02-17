@@ -45,7 +45,7 @@ export default {
         originalContent: JSON.stringify(this.originalContent)
       }).then(res => {
         toastr.success('Saved Success')
-        this.$router.push('/')
+        this.$router.push('/home/list')
       }).catch(err => {
         toastr.error('Something error')
         console.log(err)

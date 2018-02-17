@@ -4,7 +4,7 @@ import toastr from '../common/toastr'
 const axiosInstance = axios.create({
   // baseURL: 'http://local.dysun95.tk:3000/api',
   baseURL: 'https://api.dysun95.tk/api',
-  timeout: 3000,
+  timeout: 30000,
   withCredentials: true
 })
 

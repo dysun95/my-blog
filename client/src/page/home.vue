@@ -3,7 +3,7 @@
     <div class="header">
       <div class="logo" @click="goList"></div>
       <div class="text" @click="goWrite">Write my life</div>
-      <div class="button" @click="signOut">Sign out</div>
+      <div class="button" @click="isLogin ? signOut() : signIn()">{{isLogin ? 'Sign Out' : 'Sign In'}}</div>
     </div>
     <div class="body">
       <router-view></router-view>
