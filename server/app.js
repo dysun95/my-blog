@@ -23,7 +23,7 @@ app.use(cors({
 // 解析request.body 
 app.use(bodyParser())
 
-app.use(koaStatic(path.join(__dirname, '../uploads')))
+app.use(koaStatic(path.join('/root/uploads')))
 // 数据库连接
 dbConnect().then(db => {
   console.log('DB connect succefully')
