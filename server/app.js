@@ -6,7 +6,6 @@ const initRouter = require('./router/index')
 const allowOrigin = require('./config/allowOrigin')
 const koaStatic = require('koa-static')
 const path = require('path')
-const githook = require('./router/githook')
 
 const app = new Koa()
 
@@ -23,8 +22,6 @@ app.use(cors({
 
 // 解析request.body 
 app.use(bodyParser())
-
-app.use(githook.routes())
 
 app.use(koaStatic(path.join(__dirname, '../uploads')))
 // 数据库连接
