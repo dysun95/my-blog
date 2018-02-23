@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const app = new Koa()
 const githook = require('./githook')
 
 app.use(githook.routes())
