@@ -41,6 +41,10 @@ function initRouter (db) {
     await handler.editBlog(db, ctx)
   })
 
+  router.post('/remove/blog', token, async function (ctx) {
+    await handler.removeBlog(db, ctx)
+  })
+
   router.post('/upload/image', token)
   router.post('/upload/image', upload.single('image'), async ctx => {
     ctx.body = {

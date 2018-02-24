@@ -6,5 +6,6 @@ module.exports = {
   getBlogList: require('./blog/getBlogList'),
   getBlogListAll: require('./blog/getBlogListAll'),
   getBlog: require('./blog/getBlog'),
-  editBlog: require('./blog/editBlog')
+  editBlog: require('./blog/editBlog'),
+  removeBlog: require('./blog/removeBlog')
 }

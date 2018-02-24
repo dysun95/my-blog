@@ -8,7 +8,8 @@ async function getBlogList (db, ctx) {
     return
   }
   let blog = {
-    'author': puid
+    'author': puid,
+    'remove': 0
   }
   let result = await readBlogList(db, blog)
   if (result && result.length >= 0) {

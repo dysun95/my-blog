@@ -2,7 +2,7 @@
 
 async function createUser (db, user) {
   let collection = db.collection('user')
-  let result = await collection.insert(user)
+  let result = await collection.insertOne(user)
   return result
 }
 

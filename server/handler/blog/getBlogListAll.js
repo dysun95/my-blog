@@ -7,7 +7,9 @@ async function getBlogListAll (db, ctx) {
   //   resHandler(ctx, 4009)
   //   return
   // }
-  let blog = ''
+  let blog = {
+    remove: 0
+  }
   let result = await readBlogList(db, blog)
   if (result && result.length >= 0) {
     let length = result.length

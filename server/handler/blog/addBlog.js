@@ -10,7 +10,8 @@ async function addBlog (db, ctx) {
   let blog = {
     title: title,
     content: content,
-    originalContent: originalContent
+    originalContent: originalContent,
+    remove: 0
   }
   let puid = ctx.cookies.get('puid') || ctx.query.puid || ctx.request.body.puid || ''
   blog.author = puid
