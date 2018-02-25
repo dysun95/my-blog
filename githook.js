@@ -14,7 +14,8 @@ router.post('/git/hook', async (ctx) => {
       data: stdout
     }
   } else {
-    await execFile('/root/project/my-blog/run.sh')
+    const { stdout } = await execFile('/root/project/my-blog/run.sh')
+    console.log(stdout)
     ctx.body = {
       status: 200,
       message: 'push has received'
