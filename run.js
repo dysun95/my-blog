@@ -1,7 +1,9 @@
 const Koa = require('koa')
-const app = new Koa()
+const bodyParser = require('koa-bodyparser')
 const githook = require('./githook')
 
+const app = new Koa()
+app.use(bodyParser())
 app.use(githook.routes())
 
 app.listen(3001, () => {
