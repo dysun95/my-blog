@@ -1,6 +1,10 @@
 #!/bin/sh
 cd /root/project/my-blog
-echo "git pull start"
+echo "git pull"
 git pull origin master
-pm2 restart 0
+if [ $1 == "restart" ]
+then
+    pm2 restart app
+    echo "restart server"
+fi
 echo "success"

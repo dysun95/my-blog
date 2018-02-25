@@ -6,7 +6,7 @@ const execFile = util.promisify(require('child_process').execFile)
 
 router.post('/git/hook', async (ctx) => {
   if (ctx.request.body.commits && serverChanged(ctx.request.body.commits)) {
-    const { stdout } = await execFile('/root/project/my-blog/run.sh')
+    const { stdout } = await execFile('/root/project/my-blog/run.sh', ['restart'])
     console.log(stdout)
     ctx.body = {
       status: 200,
@@ -14,6 +14,7 @@ router.post('/git/hook', async (ctx) => {
       data: stdout
     }
   } else {
+    await execFile('/root/project/my-blog/run.sh')
     ctx.body = {
       status: 200,
       message: 'push has received'
