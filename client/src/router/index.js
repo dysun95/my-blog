@@ -17,6 +17,10 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path: '',
+      redirect: '/home/list'
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login,
