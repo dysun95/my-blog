@@ -24,18 +24,21 @@ router.post('/git/hook', async (ctx) => {
 })
 
 function serverChanged (commits) {
-  let {added, removed, modified} = commits
-  let all = [added, removed, modified]
-  all.forEach(array => {
-    if (array && array.length > 0) {
-      array.forEach(item => {
-        if (item.match(/^server\//)) {
-          return true
-        }
-      })
-    }
+  let changed = false
+  commits.forEach(commit => {
+    let {added, removed, modified} = commit
+    let all = [added, removed, modified]
+    all.forEach(array => {
+      if (array && array.length > 0) {
+        array.forEach(item => {
+          if (/^server\//.test(item)) {
+            changed =  true
+          }
+        })
+      }
+    })
   })
-  return false
+  return changed
 }
 
 module.exports = router
