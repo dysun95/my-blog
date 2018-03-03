@@ -12,6 +12,7 @@ function checkToken (ctx) {
   let puid = ctx.cookies.get('puid') || ctx.query.puid || ctx.request.body.puid || ''
   if (token && puid) {
     let puidInToken = decodeToken(token)
+    console.log(puidInToken)
     if (puidInToken === puid) {
       // token验证成功
       return 200
