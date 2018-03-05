@@ -4,14 +4,16 @@ const resHandler = require('../../util/response')
 
 /**
  * 增加文章，生成时间戳、blogID和作者
+ * 文章的字段 title, content, originalContent, remove, type
  */
 async function addBlog (db, ctx) {
-  let {title, content, originalContent} = ctx.request.body
+  let {title, content, originalContent, type} = ctx.request.body
   let blog = {
     title: title,
     content: content,
     originalContent: originalContent,
-    remove: 0
+    remove: 0,
+    type: type || 'default'
   }
   let puid = ctx.cookies.get('puid') || ctx.query.puid || ctx.request.body.puid || ''
   blog.author = puid
