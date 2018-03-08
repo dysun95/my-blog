@@ -1,7 +1,7 @@
 let jwt = require('jwt-simple')
 let moment = require('moment')
 
-let expires = moment().add(2, 'days').valueOf()
+// let expires = moment().add(2, 'days').valueOf()
 
 let jwtTokenSecret = 'sundengyu'
 
@@ -9,7 +9,7 @@ function encodeToken (puid) {
   if (puid) {
     let token = jwt.encode({
       puid: puid,
-      exp: expires
+      exp: moment().add(2, 'days').valueOf()
     }, jwtTokenSecret)
     return token
   } else {
